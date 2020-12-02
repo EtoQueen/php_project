@@ -18,8 +18,8 @@
 	</body>
 </html>
 
-<?php
-	$conn = mysqli_connect("localhost", "root", 12345, "park", 3304);
+<?php  if(isset($_POST["t1"]) and isset($_POST["t2"])){
+	$conn = mysqli_connect("localhost", "root", 1234, "park", 3306);
     $select = "select login, password from park.users WHERE '$_POST[t1]' = login and '$_POST[t2]' = password;";
     $re = mysqli_query($conn, $select);
     $num_row= mysqli_num_rows($re);
@@ -29,5 +29,6 @@
     else{
         echo "Логин или Пароль неправельные";
     }
+}
 ?>
 
