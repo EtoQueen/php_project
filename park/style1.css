@@ -1,0 +1,36 @@
+
+.center {
+	width:75%;
+	display:block;
+	margin: 0 auto; 
+	color:black;
+}
+h2 {
+	
+	text-align: center;
+}
+p {
+	font-size:123%;
+	margin:0;
+	
+}
+span {
+font-size:110%;
+color:#474444;	
+}
+input {
+	font-size:100%;
+	
+}
+form {
+	font-size:110%;
+	text-align: center;
+}
+#pass {
+	margin-right:0.8%;
+}
+#er {
+	text-align: center;
+	color:black;
+	margin-left:38%;
+}
