@@ -8,13 +8,18 @@ if(isset($_COOKIE["login"]) and isset($_COOKIE["pass"])){
 	$re1 = mysqli_query($conn, $select1);
 	$R1=mysqli_fetch_array($re1);
 	$title=$R1["fio_worker"];
+	$_SESSION['id_worker'] = $R1["id_worker"];
 	echo "<html>
 	<head>
 	<title>$title</title>
 	</head>
 	<body>";
 	if($R1["position"] == 'Кассир') { 
-		echo " ";
+		echo " 
+		    <form action='sale.php' method='POST'>
+        <button class='' rel='stylesheet'>Продать билет</button>
+    </form>
+	";
 	} elseif ($R1["position"] == 'Электрик') { 
 		echo " ";
 		} else {
