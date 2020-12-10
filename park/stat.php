@@ -89,11 +89,11 @@ $result = mysqli_query($conn, $query) or die("Ошибка " . mysqli_error($con
 			$check = $_SESSION['check'];
 			$date = $_POST["date"];
 			$el = implode(",", $_POST["array"]);
-			$query3 ="select name, date, adult, kids, privilege
+			$query3 ="select name, date, sum(adult) as adult, sum(kids) as kids, sum(privilege)as privilege
 			from attraction a join relationship r on r.id_attraction = a.id_attraction 
 			join platform p on p.id_place = r.id_place 
 			join operation o on r.id_relationship = o.id_relationship 
-			where p.id_place='$check' and date = '$date' and a.id_attraction in ($el);";
+			where p.id_place='$check' and date = '$date' and a.id_attraction in ($el) group by a.id_attraction;";
 			$result1 = mysqli_query($conn, $query3) or die("Ошибка " . mysqli_error($conn));
 			$rows = mysqli_num_rows($result1);
 			$query4 ="SELECT address from platform where id_place=$check;";
