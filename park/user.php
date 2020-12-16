@@ -9,6 +9,7 @@ if(isset($_COOKIE["login"]) and isset($_COOKIE["pass"])){
 	$R1=mysqli_fetch_array($re1);
 	$title=$R1["fio_worker"];
 	$_SESSION['id_worker'] = $R1["id_worker"];
+	$_SESSION['fio_worker'] = $R1["fio_worker"];
 	echo "<html>
 	<head>
 	<title>$title</title>
@@ -16,12 +17,18 @@ if(isset($_COOKIE["login"]) and isset($_COOKIE["pass"])){
 	<body>";
 	if($R1["position"] == 'Кассир') { 
 		echo " 
-		    <form action='sale.php' method='POST'>
+	<form action='sale.php' method='POST'>
         <button class='' rel='stylesheet'>Продать билет</button>
+    </form>
+	<form action='report_cashier.php' method='POST'>
+        <button class='' rel='stylesheet'>Оставить отчет</button>
     </form>
 	";
 	} elseif ($R1["position"] == 'Электрик') { 
-		echo " ";
+		echo "
+	<form action='report.php' method='POST'>
+        <button class='' rel='stylesheet'>Оставить отчет</button>
+    </form>";
 		} else {
 			echo "
     <form action='regist.php' method='POST'>
@@ -32,6 +39,9 @@ if(isset($_COOKIE["login"]) and isset($_COOKIE["pass"])){
     </form>
 	<form action='stat.php' method='POST'>
         <button class='' rel='stylesheet'>Статистика</button>
+    </form>
+	<form action='reporting.php' method='POST'>
+        <button class='' rel='stylesheet'>Отчеты</button>
     </form>
 	";
 			}
