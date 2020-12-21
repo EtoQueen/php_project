@@ -1,16 +1,9 @@
 <html>
 <head>
 <meta charset="utf-8">
-  <style type="text/css">
-   TD, TH {
-    padding: 3px; /* Поля вокруг содержимого таблицы */
-    border: 1px solid black; /* Параметры рамки */
-	
-   }
-   table {
-	 border-collapse: collapse;  
-   }
-   </style>
+<style>
+<?php echo file_get_contents("style7.css"); ?>
+</style>
 <title>
 Удаление пользователя   
 </title>
@@ -40,7 +33,7 @@ $result = mysqli_query($conn, $query) or die("Ошибка " . mysqli_error($con
 					echo "<td>" . $row['position'] . "</td>";
 					echo "<td>" . $row['fio_worker'] . "</td>";
 					$id = $row['id_user'];
-					echo "<td><input type='checkbox' name='array[]' value='$id'></td>";
+					echo "<td><input class='check' type='checkbox' name='array[]' value='$id'></td>";
 					echo "</tr>";
 				}
 		
@@ -48,12 +41,8 @@ $result = mysqli_query($conn, $query) or die("Ошибка " . mysqli_error($con
     }
     echo "</table>";
 	mysqli_free_result($result);
-
-	echo "
-	<br><input type='submit' value='Удалить'>
-	</form>";
-
-if(isset($_POST["array"])){
+	
+	if(isset($_POST["array"])){
 	foreach($_POST["array"] as $key=>$value)
     {
 	$query2 ="delete from users where id_user in ($value);";
@@ -61,6 +50,11 @@ if(isset($_POST["array"])){
     }
 	header("Refresh: 0");
 }
+
+	echo "<br><input class='delete' type='submit' value='Удалить'>
+	</form>";
+
+
 
 mysqli_close($conn);
 }

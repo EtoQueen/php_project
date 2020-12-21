@@ -1,24 +1,9 @@
 <html>
 <head>
 <meta charset="utf-8">
-  <style type="text/css">
-   TD, TH {
-    padding: 3px; /* Поля вокруг содержимого таблицы */
-    border: 1px solid black; /* Параметры рамки */
-	
-   }
-   table {
-	 border-collapse: collapse;  
-   }
-   textarea {
-	display: inline-block;
-    margin-left: 25%;
-    margin-right: auto;
-	width: 50%;
-	height: 70%;
-	resize: none;
-	}
-   </style>
+<style>
+<?php echo file_get_contents("style8.css"); ?>
+</style>
 <title>
 Просмотр отчетов  
 </title>
@@ -57,8 +42,8 @@ $result = mysqli_query($conn, $query) or die("Ошибка " . mysqli_error($con
     echo "</table>";
 	mysqli_free_result($result);
 
-	echo "<br>Дата: <input type='date' name='date' min='2020-01-12'><br>
-	<br><input type='submit' value='Посмотреть отчеты'>
+	echo "<p>Дата: <input class='date' type='date' name='date' min='2020-01-12'></p>
+	<br><input class='submit' type='submit' value='Посмотреть отчеты'>
 	</form>";
 
 if(isset($_POST["array"]) and isset($_POST["date"])){
@@ -72,7 +57,7 @@ if(isset($_POST["array"]) and isset($_POST["date"])){
     for ($i = 0 ; $i < $r ; ++$i)
     {
 		while($row=mysqli_fetch_array($result)) {
-	echo "<br><hr><br><textarea name='rep2'>";
+	echo "<br><hr><br><textarea name='rep2' readonly>";
 	$wr = $row['work_report'];
 	echo file_get_contents("$wr","r");
 	$id_work = $row['id_work'];

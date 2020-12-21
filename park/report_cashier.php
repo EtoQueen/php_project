@@ -1,38 +1,9 @@
 <html>
 <head>
 <meta charset="utf-8">
-  <style type="text/css">
-   TD, TH {
-    padding: 3px; /* Поля вокруг содержимого таблицы */
-    border: 1px solid black; /* Параметры рамки */
-	
-   }
-   table {
-	 border-collapse: collapse;  
-   }
-   textarea {
-	display: inline-block;
-    margin-left: 25%;
-    margin-right: auto;
-	width: 50%;
-	height: 70%;
-	resize: none;
-	}
-	input {
-	display: block;
-    margin-left: auto;
-    margin-right: auto;	
-	}
-		#del2, #edit2 {
-		display: none;
-	}
-	#edit1 {
-		margin-top: 0.5%;	
-	}
-	#edit {
-	margin-bottom:0.5%;	
-	}
-   </style>
+<style>
+<?php echo file_get_contents("style3.css"); ?>
+</style>
 <title>
 Отчетность 
 </title>

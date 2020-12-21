@@ -1,0 +1,80 @@
+
+   table {
+	 border-collapse: collapse;  
+	 margin: auto;
+	 max-width:100%;
+   }
+   form {
+	  max-width:100%; 
+   }
+body {background: #dcfafa;}
+a, button, .delete, .submit {
+  text-decoration: none;
+  outline: none;
+  display: block;
+  padding: 7px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 40px 40px #052463 inset, 0 0 0 0 #052463;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 90%;
+  letter-spacing: 2px;
+  color: white;
+  transition: .15s ease-in-out;
+  border:none;
+}	
+
+a:hover, button:hover, .delete:hover, .submit:hover {
+  box-shadow: 0 0 10px 0 #052463 inset, 0 0 10px 4px #052463;
+  color: #052463;
+  background: #dcfafa;
+} 
+
+.delete {
+	margin-left:auto;
+	margin-right:auto;
+}
+
+table {
+font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+font-size: 90%;
+text-align: left;
+border-collapse: collapse;
+border-radius: 20px;
+box-shadow: 0 0 0 10px #767be3;
+color: #181b33;
+}
+th {
+padding: 10px 8px;
+background: white;
+}
+table th:first-child {
+border-top-left-radius: 20px;
+}
+table th:last-child {
+border-top-right-radius: 20px;
+}
+td {
+font-size: 105%;
+border-top: 10px solid #767be3;
+padding: 8px;
+background: white;
+}
+table td:first-child {
+border-bottom-left-radius: 20px;
+}
+table td:last-child {
+border-bottom-right-radius: 20px;
+}
+
+.date{
+	width:20%;
+	font-size: 105%; 
+	font-family: Arial, sans-serif;
+	letter-spacing: 2px;
+	
+}
+.check {
+	 width:15px;
+     height:15px;
+}
