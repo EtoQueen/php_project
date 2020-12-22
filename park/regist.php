@@ -57,6 +57,7 @@ if(isset($_POST["t1"]) and isset($_POST["t2"]) and isset($_POST["t3"]) and isset
 			$worker = $_SESSION['worker'];
 			$fio = $_POST["fio"];
 			$position = $_POST["position"];
+			$_SESSION['pos'] = $position;
 			$select="select id_user from users where login = '$worker';";
 			echo "<p>";
 			$result = mysqli_query($conn, $select) or die("<span>Ошибка:</span> " . mysqli_error($conn));
@@ -65,7 +66,10 @@ if(isset($_POST["t1"]) and isset($_POST["t2"]) and isset($_POST["t3"]) and isset
 			$insert2 = "insert into worker(position, fio_worker, id_user) value ('$position', '$fio', '$id_user');";
 			$result = mysqli_query($conn, $insert2) or die("<span>Ошибка:</span> " . mysqli_error($conn));
 			if(empty(mysqli_error($conn))){
-				echo "Работиник успешно создан.</p>";
+				if($position !== 'Супервайзер'){
+				header('Location: http://localhost//park/distribution.php');
+				}
+				else {echo "Работиник успешно создан.</p>";}
 			}
 		}
 		
@@ -76,4 +80,3 @@ echo "<br><input class='submit' type='submit' value='OK'></form>
 }
 else {header('Location: http://localhost//park/main.php');}
 ?>
-
