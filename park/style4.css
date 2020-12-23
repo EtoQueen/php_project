@@ -1,0 +1,62 @@
+
+body {background: #dcfafa;}
+a, button, #id_edit {
+  text-decoration: none;
+  outline: none;
+  display: block;
+  padding: 7px 20px;
+  
+  border-radius: 10px;
+  box-shadow: 0 0 40px 40px #052463 inset, 0 0 0 0 #052463;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 90%;
+  letter-spacing: 2px;
+  color: white;
+  transition: .15s ease-in-out;
+  border:none;
+  
+}
+
+#id_edit {
+	margin-left:auto;
+	margin-right:auto;	
+	font-size: 105%;
+	padding: 11px 24px;
+}
+
+
+p {
+	font-weight: bold;
+	color:#012c5c;
+	text-align: center;
+	font-size: 145%; 
+	font-family: Arial, sans-serif;
+	
+	
+}
+.error {
+	font-weight: normal;
+font-size: 130%;
+
+}
+span {color:#db2745;}
+
+input {
+	
+	font-size: 80%; 
+}	
+
+a:hover, button:hover, #id_edit:hover {
+  box-shadow: 0 0 10px 0 #052463 inset, 0 0 10px 4px #052463;
+  color: #052463;
+  background: #dcfafa;
+}
+
+input:hover { border-color: #3076bf; 
+} 
+input:focus { 
+	outline-width: thick;
+	outline-color:#007dff;
+} 
+

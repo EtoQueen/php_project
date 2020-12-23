@@ -1,16 +1,9 @@
 <html>
 <head>
 <meta charset="utf-8">
-  <style type="text/css">
-   TD, TH {
-    padding: 3px; /* Поля вокруг содержимого таблицы */
-    border: 1px solid black; /* Параметры рамки */
-	
-   }
-   table {
-	 border-collapse: collapse;  
-   }
-   </style>
+<style>
+<?php echo file_get_contents("style5.css"); ?>
+</style>
 <title>
 Продажа билетов  
 </title>
@@ -35,7 +28,7 @@ $result2 = mysqli_query($conn, $query) or die("Ошибка " . mysqli_error($co
     $rows = mysqli_num_rows($result2); 
 	$r=mysqli_fetch_array($result);
 	$id_relationship = $r['id_relationship'];
-	echo "<h2>Прайс лист</h2>
+	echo "<div><h2>Прайс лист</h2>
 	<p>Адрес площадки: ". $r['address'] ."</p>
 	<p>Название аттракциона: ". $r['name'] ."</p>";
 	echo "<form action='' method='POST'>";
@@ -55,14 +48,14 @@ $result2 = mysqli_query($conn, $query) or die("Ошибка " . mysqli_error($co
 
     }
     echo "<tr>
-	<th><input type='number' name='s1' placeholder='0' min='0'></th>
-	<th><input type='number' name='s2' placeholder='0' min='0'></th>
-	<th><input type='number' name='s3' placeholder='0' min='0'></th></tr>
+	<td><input class='ticket' type='number' name='s1' placeholder='0' min='0'></td>
+	<td><input class='ticket' type='number' name='s2' placeholder='0' min='0'></td>
+	<td><input class='ticket' type='number' name='s3' placeholder='0' min='0'></td></tr>
 	</table>";
 	mysqli_free_result($result);
 	echo "
-	<br><input type='submit' value='Продать'>
-	</form>";
+	<br><br><input class='sale' type='submit' value='Продать'>
+	</form><p>";
 if(isset($_POST["s1"]) and isset($_POST["s2"]) and isset($_POST["s3"])){
 	$kids = $_POST["s1"];
 	$adult = $_POST["s2"];
@@ -80,6 +73,7 @@ if(isset($_POST["s1"]) and isset($_POST["s2"]) and isset($_POST["s3"])){
 	value (CURRENT_DATE,$kids, $adult, $privilege, $id_relationship);";
     $result = mysqli_query($conn, $insert) or die("Ошибка: " . mysqli_error($conn));
 	echo "Билеты успешно проданы :^)";
+	echo"</p></div>";
 }
 
 

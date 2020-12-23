@@ -1,23 +1,16 @@
 <html>
 <head>
 <meta charset="utf-8">
-  <style type="text/css">
-   TD, TH {
-    padding: 3px; /* Поля вокруг содержимого таблицы */
-    border: 1px solid black; /* Параметры рамки */
-	
-   }
-   table {
-	 border-collapse: collapse;  
-   }
-   </style>
+<style>
+<?php echo file_get_contents("style6.css"); ?>
+</style>
 <title>
 Статистика   
 </title>
 </head>
 <body>
     <form action="user.php" method="POST">
-        <button class="" rel="stylesheet">Назад</button>
+        <button class="back" rel="stylesheet">Назад</button>
     </form>
 <?php
 	if(isset($_COOKIE["login"]) and isset($_COOKIE["pass"])){	
@@ -40,13 +33,13 @@ $result = mysqli_query($conn, $query) or die("Ошибка " . mysqli_error($con
 					echo "<td>" . $row['address'] . "</td>";
 					echo "<td>" . $row['fio_ceo'] . "</td>";
 					$id = $row['id_place'];
-					echo "<td><input type='radio' name='check' value='$id'></td>";
+					echo "<td><input type='radio' name='check' value='$id' id='check'></td>";
 					echo "</tr>";
 				}
 		
 
     }
-    echo "</table>";
+    echo "</table><br>";
 	mysqli_free_result($result);
 	
 	if(isset($_POST["check"])){
@@ -61,7 +54,7 @@ $result = mysqli_query($conn, $query) or die("Ошибка " . mysqli_error($con
 	$result = mysqli_query($conn, $query4) or die("Ошибка " . mysqli_error($conn));
 	while($r=mysqli_fetch_array($result))
 			{
-					echo "<br>" . $r['address'] . "<br>";
+					echo "<br><p>" . $r['address'] . "</p>";
 			}
 	mysqli_free_result($result);	
 	$result = mysqli_query($conn, $query2) or die("Ошибка " . mysqli_error($conn));
@@ -83,7 +76,7 @@ $result = mysqli_query($conn, $query) or die("Ошибка " . mysqli_error($con
     }
     echo "</table>";
 
-	echo "<br>Дата: <input type='date' name='date' min='2020-04-13'>";
+	echo "<p>Дата: <input class='date' type='date' name='date' min='2020-04-13'></p>";
 } else if(isset($_POST["date"]) and isset($_POST["array"])){
 			session_start();
 			$check = $_SESSION['check'];
@@ -100,7 +93,7 @@ $result = mysqli_query($conn, $query) or die("Ошибка " . mysqli_error($con
 			$result = mysqli_query($conn, $query4) or die("Ошибка " . mysqli_error($conn));
 			while($r=mysqli_fetch_array($result))
 			{
-					echo " <br>" . $r['address'] . "<br>";
+					echo " <br><p>" . $r['address'] . "</p>";
 			}
 			echo "<table><tr>
 			<th>Название</th><th>Дата</th><th>Взрослые билеты</th><th>Детские билеты</th><th>Льготные билеты</th></tr>";
@@ -117,9 +110,9 @@ $result = mysqli_query($conn, $query) or die("Ошибка " . mysqli_error($con
 		
 
 			}
-			echo "</table>";	
+			echo "</table><br>";	
 		} 
-	echo "<br><input type='submit' value='Выбрать'></form>";
+	echo "<input class='submit' type='submit' value='Выбрать'></form>";
 
 
 mysqli_close($conn);
